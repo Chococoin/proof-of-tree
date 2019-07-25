@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db_engine: 
+    build: .
+    ports: 
+      - 6379:6379
+  ipfs:
+    image: ipfs/go-ipfs
+    hostname: ipfs-node
+    volumes:
+      - "./export:/export"
+      - "./data/ipfs:/data/ipfs"
+    ports:
+      - "5001:5001"
+      - "4001:4001"
+      - "8080:8080"
